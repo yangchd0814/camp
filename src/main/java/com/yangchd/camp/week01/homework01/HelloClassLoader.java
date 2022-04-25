@@ -9,7 +9,7 @@ public class HelloClassLoader extends ClassLoader{
     public static void main(String[] args) throws Exception {
         HelloClassLoader helloClassLoader = new HelloClassLoader();
         Class<?> className = helloClassLoader.findClass("Hello");
-        Object instance = className.getDeclaredConstructor().newInstance();
+        Object instance = className.newInstance();
         Method method = className.getDeclaredMethod("hello");
         method.invoke(instance);
 
