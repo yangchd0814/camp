@@ -3,6 +3,8 @@ package com.yangchd.camp.week01.homework01;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HelloClassLoader extends ClassLoader{
 
@@ -22,7 +24,10 @@ public class HelloClassLoader extends ClassLoader{
         try {
             byte[] bytes = new byte[inputStream.available()];
             inputStream.read(bytes);
-            byte[] decodeBytes = decode(bytes);
+            byte[] decodeBytes = new byte[bytes.length];
+            for (int i = 0; i < bytes.length; i++) {
+                decodeBytes[i] = (byte)(255 - bytes[i]);
+            }
             return defineClass(name, decodeBytes, 0, decodeBytes.length);
         } catch (IOException e) {
             throw new ClassNotFoundException(name, e);
@@ -33,14 +38,6 @@ public class HelloClassLoader extends ClassLoader{
                 e.printStackTrace();
             }
         }
-    }
-
-    private static byte[] decode(byte[] bytes) {
-        byte[] decodeBytes = new byte[bytes.length];
-        for (int i = 0; i < bytes.length; i++) {
-            decodeBytes[i] = (byte)(255 - bytes[i]);
-        }
-        return decodeBytes;
     }
 
     /*@Override
