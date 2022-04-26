@@ -1,4 +1,4 @@
-package com.yangchd.camp.week01.homework02;
+package com.yangchd.week01.homework02;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,7 +12,6 @@ public class HelloClassLoader extends ClassLoader{
         Object instance = className.newInstance();
         Method method = className.getDeclaredMethod("hello");
         method.invoke(instance);
-
         /*new HelloClassLoader().findClass("week01.Hello").newInstance();*/
     }
 

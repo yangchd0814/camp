@@ -1,4 +1,4 @@
-package com.yangchd.camp;
+package com.yangchd;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
