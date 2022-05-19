@@ -1,5 +1,7 @@
-package com.yangchd.week03.homework01;
+package com.yangchd.week03.homework03;
 
+import com.yangchd.week03.homework03.filter.HeaderHttpRequestFilter;
+import com.yangchd.week03.homework03.filter.HttpRequestFilter;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
@@ -16,6 +18,9 @@ public class HttpHandler extends ChannelInboundHandlerAdapter {
 
     public static CloseableHttpClient client = HttpClients.createDefault();
     public static String host = "http://localhost:8088/";
+
+    HttpRequestFilter filter = new HeaderHttpRequestFilter();
+
     @Override
     public void channelReadComplete(ChannelHandlerContext ctx) {
         ctx.flush();
@@ -25,6 +30,7 @@ public class HttpHandler extends ChannelInboundHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
         try {
             FullHttpRequest fullHttpRequest = (FullHttpRequest) msg;
+            filter.filter(fullHttpRequest, ctx);
             HttpGet httpGet = new HttpGet(host);
             CloseableHttpResponse response = null;
             FullHttpResponse fullResponse = null;
