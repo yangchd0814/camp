@@ -10,7 +10,7 @@ import java.util.concurrent.Executors;
 public class HttpServer03 {
     public static void main(String[] args) throws IOException {
         ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
-        ServerSocket serverSocket = new ServerSocket(8801);
+        ServerSocket serverSocket = new ServerSocket(8802);
         while(true) {
             try {
                 final Socket socket = serverSocket.accept();
@@ -26,7 +26,7 @@ public class HttpServer03 {
             PrintWriter printWriter = new PrintWriter(socket.getOutputStream(), true);
             printWriter.println("HTTP/1.1 200 OK");
             printWriter.println("Content-Type:text/html;charset=utf-8");
-            String body = "hello world!";
+            String body = "hello world! 8802";
             printWriter.println("Content-Length:" + body.getBytes().length);
             printWriter.println();
             printWriter.write(body);
