@@ -3,7 +3,7 @@ package com.yangchd.exercise.concurrency.conc0302.atomic;
 public class AtomicMain {
 
     public static void main(String[] args) {
-        final SyncCount count = new SyncCount();
+        final AtomicCount count = new AtomicCount();
         for (int i = 0; i < 100; i++) {
             new Thread(new Runnable() {
                 @Override

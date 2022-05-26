@@ -1,6 +1,5 @@
-package com.yangchd.exercise.concurrency.conc0303;
+package com.yangchd.week04;
 
-import java.util.Random;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
@@ -12,14 +11,11 @@ import java.util.concurrent.FutureTask;
  *
  * 一个简单的代码参考：
  */
-public class Homework03 {
+public class Homework03_01 {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
 
         long start=System.currentTimeMillis();
-
-        // 在这里创建一个线程或线程池，
-        // 异步执行 下面方法
 
         FutureTask<Integer> task = new FutureTask<Integer>(new Callable<Integer>() {
             @Override
@@ -29,12 +25,9 @@ public class Homework03 {
         });
         new Thread(task).start();
 
-        // 确保  拿到result 并输出
         System.out.println("异步计算结果为："+task.get());
 
         System.out.println("使用时间："+ (System.currentTimeMillis()-start) + " ms");
-
-        // 然后退出main线程
     }
 
     private static int sum() {

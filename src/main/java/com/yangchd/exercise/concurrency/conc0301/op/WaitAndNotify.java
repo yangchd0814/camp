@@ -51,8 +51,8 @@ class MethodClass {
             }else {
                 productCount++;
             }
-
-            notifyAll();
+            notify();
+            //notifyAll();
         }
     }
 
@@ -66,8 +66,8 @@ class MethodClass {
             }else {
                 productCount--;
             }
-
-            notifyAll();
+            notify();
+            //notifyAll();
         }
     }
 }

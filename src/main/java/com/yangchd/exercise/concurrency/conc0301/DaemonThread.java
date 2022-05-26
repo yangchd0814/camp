@@ -17,6 +17,11 @@ public class DaemonThread {
         thread.setDaemon(true);
         thread.start();
 
+        Thread thread2 = new Thread(task);
+        thread2.setName("test-thread-2");
+        thread2.setDaemon(false);
+        thread2.start();
+
         //Thread.sleep(5500);
     }
 
