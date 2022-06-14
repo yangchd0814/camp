@@ -40,8 +40,7 @@ public class ShardingMasterSlaveDataSource {
         Properties properties = new Properties();
         properties.setProperty("sql.show", "true");
 
-        return MasterSlaveDataSourceFactory.createDataSource(createDataSourceMap(dbs), configuration, new HashMap<>(0),
-                properties);
+        return MasterSlaveDataSourceFactory.createDataSource(createDataSourceMap(dbs), configuration, properties);
     }
 
     /**
